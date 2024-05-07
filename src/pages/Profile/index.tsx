@@ -3,7 +3,7 @@ import '../../styles/main.css'
 function Profile() {
 
   return (
-    <div>Profile</div>
+    <div className='vertical-text'>Profile</div>
   )
 }
 
