@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: Roboto, sans-serif;
+}
+
 .vertical-text {
   writing-mode:vertical-lr;
   transform: rotate(180deg);
