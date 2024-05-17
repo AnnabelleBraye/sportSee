@@ -1,4 +1,5 @@
-import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, TooltipProps } from "recharts";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, TooltipProps, Scatter, Rectangle } from "recharts";
 import { Props } from "recharts/types/component/DefaultLegendContent";
 import { NameType, ValueType } from "recharts/types/component/DefaultTooltipContent";
 
@@ -11,7 +12,7 @@ const customLegend = ({ payload }: Props) => {
   if (!payload) return null;
   return (
     <div className="flex justify-between pb-16">
-      <p className="text-[15px] text-[#20253A] mt-6 text-charts-title">Activité quotidienne</p>
+      <p className="text-medium font-medium text-[#20253A] mt-6 text-charts-title">Activité quotidienne</p>
       <ul className="flex gap-7">
         {payload.map(({ value, color, dataKey }) => {
           const unit = value === 'weight' ? 'Poids (kg)' : 'Calories brûlées (kCal)';
@@ -29,7 +30,7 @@ const customLegend = ({ payload }: Props) => {
               >
                 <circle cx="50" cy="50" r="50" />
               </svg>
-              <p className="text-[#74798C] text-medium">{unit}</p>
+              <p className="text-legend-grey text-medium">{unit}</p>
             </li>
           );
         })}
