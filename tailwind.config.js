@@ -11,6 +11,13 @@ export default {
         'secondary-color': '#282D30',
         'light-grey': '#FBFBFB',
         'dark-grey': '#C4C4C480',
+        'legend-grey': '#74798C'
+      },
+      screens: {
+        'xl': '1480px'
+      },
+      fontSize: {
+        'medium': '15px'
       }
     },
   },
