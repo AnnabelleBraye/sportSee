@@ -1,4 +1,4 @@
-export type CardType = {
+export type CardProps = {
   image: string,
   value: string,
   name: string
@@ -8,7 +8,7 @@ const Card = ({
   image,
   value,
   name
-}: CardType) => {
+}: CardProps) => {
   return (
     <div className="flex items-center w-full rounded-md bg-light-grey">
       <img src={image} className="m-8 mr-6" width={60} height={60} />

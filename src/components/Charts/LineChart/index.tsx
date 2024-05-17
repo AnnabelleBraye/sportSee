@@ -1,19 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Legend, Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts"
-import { NameType, ValueType } from "recharts/types/component/DefaultTooltipContent";
+import { 
+  Legend, 
+  Line, 
+  LineChart, 
+  Rectangle, 
+  ResponsiveContainer, 
+  Tooltip, 
+  TooltipProps, 
+  XAxis, 
+  YAxis 
+} from "recharts"
+import { 
+  NameType, 
+  ValueType 
+} from "recharts/types/component/DefaultTooltipContent";
 import { Props } from "recharts/types/component/DefaultLegendContent";
-import { RectRadius } from "recharts/types/shape/Rectangle";
 
-export type LineChartType = {
+export type LineChartProps = {
   name: string,
   value: number,
 }
 
-const CustomCursor = (props: any) => {
-  const { points, width, height, payloadIndex, stroke } = props;
-  console.log(props);
+/**
+ * Create a custom tooltip cursor
+ * @param param0 
+ * @returns 
+ */
+const CustomCursor = ({ points, width, payloadIndex }: any) => {
   if (points && points.length) {
-    let { x, y } = points[0];
+    let x = points[0].x;
+    const y = points[0].y;
     let newWidth = width;
     if (payloadIndex === 0) {
       x -= 4.5;
@@ -35,6 +51,11 @@ const CustomCursor = (props: any) => {
   }
 };
   
+/**
+ * Create a custum axis tick
+ * @param param0 
+ * @returns 
+ */
 const CustomAxisTick = ({x, y, payload, index, visibleTicksCount}: any) => {
   let textAnchor = 'middle';
   let dx = 0
@@ -54,14 +75,24 @@ const CustomAxisTick = ({x, y, payload, index, visibleTicksCount}: any) => {
   );
 }
 
+/**
+ * Create a custom legend
+ * @param param0 
+ * @returns 
+ */
 const customLegend = ({ payload }: Props) => {
   if (payload) {
     return (
-      <p className="absolute p-7 text-medium text-white">Durée moyenne des sessions</p>
+      <p className="absolute w-10/12 p-7 text-medium text-white">Durée moyenne des sessions</p>
     );
   }
 };
 
+/**
+ * 
+ * @param param0 
+ * @returns 
+ */
 const customTooltip = ({ payload }: TooltipProps<ValueType, NameType>) => {
   if (payload && payload.length !== 0) {
     return (
@@ -72,14 +103,11 @@ const customTooltip = ({ payload }: TooltipProps<ValueType, NameType>) => {
   }
 };
 
-const LineChartComponent = ({data}: {data: LineChartType[]}) => {
-  const yTicks = [];
-  const values = data.map(d => d.value)
-  const minTick = Math.min(...values)
-  const maxTick = Math.max(...values)
-  for (let i = minTick - 10; i < maxTick + 30; i++) {
-    yTicks.push(i);
-  }
+const LineChartComponent = ({data}: {data: LineChartProps[]}) => {
+  const {
+    yTicks,
+    values
+  } = manageData(data);
 
   return (
       <ResponsiveContainer 
@@ -130,4 +158,18 @@ const LineChartComponent = ({data}: {data: LineChartType[]}) => {
   )
 }
 
+const manageData = (data: LineChartProps[]) => {
+  const yTicks = [];
+  const values = data.map(d => d.value)
+  const minTick = Math.min(...values)
+  const maxTick = Math.max(...values)
+  for (let i = minTick - 10; i < maxTick + 30; i++) {
+    yTicks.push(i);
+  }
+
+  return {
+    yTicks,
+    values
+  }
+}
 export default LineChartComponent

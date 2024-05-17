@@ -1,17 +1,25 @@
-import { PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
+import {
+  PolarAngleAxis, 
+  RadialBar, 
+  RadialBarChart, 
+  ResponsiveContainer 
+} from "recharts"
 
-export type RadialBarChartType = {
+export type RadialBarChartProps = {
   name: string,
   value: number,
   fill: string
 }
 
-const RadialBarChartComponent = ({data}: {data: RadialBarChartType[]}) => {
-  console.log('radialbarchart')
+const RadialBarChartComponent = ({data}: {data: RadialBarChartProps[]}) => {
   return (
     <div className='h-full w-full relative'>
       <h3 className='absolute top-6 left-8 text-medium font-medium'>Score</h3>
-      <ResponsiveContainer width="100%" height="100%" className='rounded-md bg-light-grey'>
+      <ResponsiveContainer 
+        width="100%" 
+        height="100%" 
+        className='rounded-md bg-light-grey'
+      >
         <RadialBarChart
           data={data}
           innerRadius={80}
@@ -34,9 +42,9 @@ const RadialBarChartComponent = ({data}: {data: RadialBarChartType[]}) => {
           />
         </RadialBarChart>
       </ResponsiveContainer>
-      <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-2xl font-bold text-[#282D30]'>
+      <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-2xl font-bold text-secondary-color'>
         {data[0]?.value}%<br />
-        <span className='text-base text-[#74798C] font-medium'>de votre<br />objectif</span>
+        <span className='text-base text-legend-grey font-medium'>de votre<br />objectif</span>
       </p>
     </div>
   )
