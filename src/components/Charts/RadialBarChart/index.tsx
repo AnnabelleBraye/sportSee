@@ -10,7 +10,7 @@ const RadialBarChartComponent = ({data}: {data: RadialBarChartType[]}) => {
   console.log('radialbarchart')
   return (
     <div className='h-full w-full relative'>
-      <h3 className='absolute top-6 left-8 text-[15px] font-medium'>Score</h3>
+      <h3 className='absolute top-6 left-8 text-medium font-medium'>Score</h3>
       <ResponsiveContainer width="100%" height="100%" className='rounded-md bg-light-grey'>
         <RadialBarChart
           data={data}
