@@ -140,7 +140,7 @@ const BarChartComponent = ({data}: {data: BarChartProps[]}) => {
             cursor={{ fill: `${TOOLTIP_COLOR}`, fillOpacity: 0.5 }}
             content={customTooltip}
             allowEscapeViewBox={{ x: false, y: false }}
-            offset={10}
+            offset={100}
           />
           <Legend
             align="right"
