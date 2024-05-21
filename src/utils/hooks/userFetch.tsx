@@ -5,8 +5,8 @@ type FetchProps = {
   url: string,
 }
 
-export type FetchType = {
-  data: any,
+export type FetchType<T> = {
+  data: T | null,
   isLoading: boolean,
   error: boolean
 }
@@ -16,12 +16,12 @@ export type FetchType = {
  * @param url { String } Url to call
  * @returns {any, Boolean, Boolean}
  */
-export const useFetch = ({
+export const useFetch = <T,>({
   url
-}: FetchProps): FetchType => {
+}: FetchProps): FetchType<T> => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<T | null>(null);
 
   useEffect(() => {
     if (!url) return;
