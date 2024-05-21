@@ -25,9 +25,14 @@ import Card,
 
 import '../../styles/main.css'
 import Charts from '../../components/Profile/Charts';
+import { useEffect } from 'react';
 
 const Profile = () => {
-  const { globalUser } = useUser();
+  const { globalUser, setGlobalUser } = useUser();
+
+  useEffect(() => {
+    // setGlobalUser({id: 18, firstname: 'Ambre'});
+  }, [setGlobalUser])
 
   const user: FetchType = FetchUserData(globalUser.id);
   const userActivity: FetchType = FetchUserActivity(globalUser.id);

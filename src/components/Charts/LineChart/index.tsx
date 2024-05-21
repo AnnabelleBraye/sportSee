@@ -16,6 +16,12 @@ import {
 } from "recharts/types/component/DefaultTooltipContent";
 import { Props } from "recharts/types/component/DefaultLegendContent";
 
+import {
+  RADIANT_COLOR,
+  WHITE_COLOR,
+  TEXT_COLOR
+} from "../../../constants";
+
 export type LineChartProps = {
   name: string,
   value: number,
@@ -39,8 +45,8 @@ const CustomCursor = ({ points, width, payloadIndex }: any) => {
     }
     return (
       <Rectangle
-        fill="black"
-        stroke="black"
+        fill={TEXT_COLOR}
+        fontWeight={500}
         x={x}
         y={y-4.5}
         opacity={0.2}
@@ -68,7 +74,16 @@ const CustomAxisTick = ({x, y, payload, index, visibleTicksCount}: any) => {
   }
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={0} y={0} dy={0} dx={dx} textAnchor={textAnchor} opacity={0.5} fontSize={12} fill="#FFFFFF">
+      <text
+        x={0}
+        y={0}
+        dy={0} 
+        dx={dx} 
+        textAnchor={textAnchor} 
+        opacity={0.5} 
+        fontSize={12} 
+        fill={WHITE_COLOR}
+      >
         {payload.value}
       </text>
     </g>
@@ -113,13 +128,13 @@ const LineChartComponent = ({data}: {data: LineChartProps[]}) => {
       <ResponsiveContainer 
         width="100%" 
         height="100%"
-        className="rounded-md bg-primary-color overflow-hidden"
+        className="rounded-md bg-primary-color overflow-hidden shadow-card"
       >
         <LineChart width={256} data={data}>
           <defs>
             <linearGradient id="colorGradient" x1="0" y1="1" x2="1" y2="1">
-              <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.4} />
-              <stop offset="95%" stopColor="#FFFFFF" stopOpacity={1} />
+              <stop offset="5%" stopColor={RADIANT_COLOR} stopOpacity={0.4} />
+              <stop offset="95%" stopColor={RADIANT_COLOR} stopOpacity={1} />
             </linearGradient>
           </defs>
           <XAxis 
@@ -127,7 +142,6 @@ const LineChartComponent = ({data}: {data: LineChartProps[]}) => {
             axisLine={false} 
             tickLine={false} 
             opacity={0.5}
-            stroke="#FFFFFF"
             tick={<CustomAxisTick />} 
           />
           <YAxis hide tickSize={20} ticks={yTicks} domain={values} />
