@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
 
-type fetchProps = {
+type FetchProps = {
   url: string,
+}
+
+export type FetchType = {
+  data: any,
+  isLoading: boolean,
+  error: boolean
 }
 
 /**
@@ -12,11 +18,7 @@ type fetchProps = {
  */
 export const useFetch = ({
   url
-}: fetchProps): {
-  data: any,
-  error: boolean,
-  isLoading: boolean
-} => {
+}: FetchProps): FetchType => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<any>(null);
