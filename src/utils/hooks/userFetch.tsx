@@ -33,7 +33,6 @@ export const useFetch = ({
         const data = await response.json();
         setData(data.data);
       } catch(e) {
-        console.log(e);
         setError(true);
       } finally {
         setLoading(false);

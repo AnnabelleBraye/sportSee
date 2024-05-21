@@ -95,7 +95,6 @@ const BarChartComponent = ({data}: {data: BarChartProps[]}) => {
     minY,
     maxY
   } = manageData(data);
-  console.log(xTicks, yTicks, minY, maxY)
 
   return (
     <div className="w-full h-full">
