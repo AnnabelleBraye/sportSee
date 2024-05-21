@@ -16,6 +16,12 @@ import {
   ValueType 
 } from "recharts/types/component/DefaultTooltipContent";
 
+import { 
+  PRIMARY_COLOR,
+  SECONDARY_COLOR,
+  TOOLTIP_COLOR
+} from "../../../constants";
+
 export type BarChartProps = {
   day: number,
   weight: number,
@@ -89,15 +95,17 @@ const BarChartComponent = ({data}: {data: BarChartProps[]}) => {
     minY,
     maxY
   } = manageData(data);
+  console.log(xTicks, yTicks, minY, maxY)
 
   return (
     <div className="w-full h-full">
       <ResponsiveContainer
         width='100%' 
         height='100%' 
-        className='rounded-md bg-light-grey pl-9'
+        className='rounded-md bg-light-grey pl-9 shadow-card'
       >
         <BarChart data={data} barSize={7} barGap={8}>
+          <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis
             tick={{ fontSize: 8 }}
             dataKey="day"
@@ -114,23 +122,22 @@ const BarChartComponent = ({data}: {data: BarChartProps[]}) => {
             orientation="right"
           />
           <YAxis yAxisId="left" hide />
-          <CartesianGrid strokeDasharray="3" vertical={false} />
           <Bar
             dataKey="weight" 
             yAxisId="right" 
-            fill="#282D30" 
+            fill={SECONDARY_COLOR} 
             unit='Kg' 
             radius={[10, 10, 0, 0]}
           />
           <Bar 
             dataKey="calories" 
             yAxisId="left" 
-            fill="#E60000" 
+            fill={PRIMARY_COLOR} 
             unit='Kcal' 
             radius={[10, 10, 0, 0]}
           />
           <Tooltip
-            cursor={{ fill: '#c4c4c4', fillOpacity: 0.5 }}
+            cursor={{ fill: `${TOOLTIP_COLOR}`, fillOpacity: 0.5 }}
             content={customTooltip}
             allowEscapeViewBox={{ x: false, y: false }}
             offset={10}

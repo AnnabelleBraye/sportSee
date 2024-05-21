@@ -1,0 +1,6 @@
+export const PRIMARY_COLOR = "#E60000"
+export const SECONDARY_COLOR = "#282D30"
+export const TOOLTIP_COLOR = "#C4C4C4"
+export const RADIANT_COLOR = "#FFFFFF"
+export const WHITE_COLOR = "#FFFFFF"
+export const TEXT_COLOR = "#000000"
