@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FetchType, useFetch } from "../utils/hooks/userFetch";
 
 import User from "../models/User";
@@ -7,9 +8,10 @@ import UserPerformance from "../models/UserPerformance";
 
 const host = 'http://localhost:3000';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FetchDataAndDeserialize = <T,>(url: string, deserialize: (data: any) => T) => {
-  const fetchData = useFetch({ url });
+const FetchDataAndDeserialize = <T,>(
+  url: string, deserialize: (data: any) => T
+): FetchType<T> => {
+  const fetchData = useFetch<T>({ url });
 
   if (fetchData.data) {
     fetchData.data = deserialize(fetchData.data);
@@ -18,22 +20,22 @@ const FetchDataAndDeserialize = <T,>(url: string, deserialize: (data: any) => T)
   return fetchData;
 };
 
-export const FetchUserData = (id: number): FetchType => {
+export const FetchUserData = (id: number): FetchType<User> => {
   const url = `${host}/user/${id}`;
   return FetchDataAndDeserialize<User>(url, User.fromApiResponse);
 };
 
-export const FetchUserActivity = (id: number) => {
+export const FetchUserActivity = (id: number): FetchType<UserActivity> => {
   const url = `${host}/user/${id}/activity`;
   return FetchDataAndDeserialize<UserActivity>(url, UserActivity.fromApiResponse);
 };
 
-export const FetchUserAverageSessions = (id: number) => {
+export const FetchUserAverageSessions = (id: number): FetchType<UserAverageSessions> => {
   const url = `${host}/user/${id}/average-sessions`;
   return FetchDataAndDeserialize<UserAverageSessions>(url, UserAverageSessions.fromApiResponse);
 };
 
-export const FetchUserPerformance = (id: number) => {
+export const FetchUserPerformance = (id: number): FetchType<UserPerformance> => {
   const url = `${host}/user/${id}/performance`;
   return FetchDataAndDeserialize<UserPerformance>(url, UserPerformance.fromApiResponse);
 };

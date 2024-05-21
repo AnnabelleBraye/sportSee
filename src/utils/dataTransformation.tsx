@@ -59,8 +59,8 @@ export const transformRadarChartData = (userPerformance: UserPerformance): Radar
   }));
 };
 
-export const transformUserSessionsAverageData = (userSessionsAverage: UserAverageSessions): LineChartProps[] => {
-  return userSessionsAverage?.sessions.map((session: SessionAverageType) => ({
+export const transformUserAverageSessionsData = (userAverageSessions: UserAverageSessions): LineChartProps[] => {
+  return userAverageSessions?.sessions.map((session: SessionAverageType) => ({
     name: getFirstLetterDay(session.day),
     value: session.sessionLength
   }));

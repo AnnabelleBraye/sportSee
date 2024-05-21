@@ -8,7 +8,7 @@ import RadialBarChartComponent, { RadialBarChartProps } from "../Charts/RadialBa
 type ChartProps = {
   userActivity: FetchType,
   barChartData: BarChartProps[],
-  userSessionsAverage: FetchType,
+  userAverageSessions: FetchType,
   lineChartData: LineChartProps[], 
   userPerformance: FetchType, 
   radarChartData: RadarChartProps[], 
@@ -19,7 +19,7 @@ type ChartProps = {
 const Charts = ({
   userActivity, 
   barChartData, 
-  userSessionsAverage, 
+  userAverageSessions, 
   lineChartData, 
   userPerformance, 
   radarChartData, 
@@ -37,7 +37,7 @@ const Charts = ({
 
       <div className='flex justify-between h-64 gap-8'>
         <div className="w-72">
-          {!userSessionsAverage.data || userSessionsAverage.isLoading ? 
+          {!userAverageSessions.data || userAverageSessions.isLoading ? 
             <Loader /> :
             <LineChartComponent data={lineChartData} />
           }
