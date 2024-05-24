@@ -15,12 +15,7 @@ import {
   ValueType 
 } from "recharts/types/component/DefaultTooltipContent";
 import { Props } from "recharts/types/component/DefaultLegendContent";
-
-import {
-  RADIANT_COLOR,
-  WHITE_COLOR,
-  TEXT_COLOR
-} from "../../../constants";
+import { colors } from "../../../constants";
 
 export type LineChartProps = {
   name: string,
@@ -45,7 +40,7 @@ const CustomCursor = ({ points, width, payloadIndex }: any) => {
     }
     return (
       <Rectangle
-        fill={TEXT_COLOR}
+        fill={colors.TEXT_COLOR}
         fontWeight={500}
         x={x}
         y={y-4.5}
@@ -82,7 +77,7 @@ const CustomAxisTick = ({x, y, payload, index, visibleTicksCount}: any) => {
         textAnchor={textAnchor} 
         opacity={0.5} 
         fontSize={12} 
-        fill={WHITE_COLOR}
+        fill={colors.WHITE_COLOR}
       >
         {payload.value}
       </text>
@@ -133,8 +128,8 @@ const LineChartComponent = ({data}: {data: LineChartProps[]}) => {
         <LineChart width={256} data={data}>
           <defs>
             <linearGradient id="colorGradient" x1="0" y1="1" x2="1" y2="1">
-              <stop offset="5%" stopColor={RADIANT_COLOR} stopOpacity={0.4} />
-              <stop offset="95%" stopColor={RADIANT_COLOR} stopOpacity={1} />
+              <stop offset="5%" stopColor={colors.RADIANT_COLOR} stopOpacity={0.4} />
+              <stop offset="95%" stopColor={colors.RADIANT_COLOR} stopOpacity={1} />
             </linearGradient>
           </defs>
           <XAxis 

@@ -7,9 +7,7 @@ import {
   ResponsiveContainer 
 } from "recharts";
 
-import {
-  WHITE_COLOR
-} from "../../../constants";
+import { colors } from "../../../constants";
 
 export type RadarChartProps = {
   kind: string,
@@ -36,7 +34,7 @@ const RadarChartComponent = ({data}: {data: RadarChartProps[]}) => {
           <PolarAngleAxis
             dataKey="kind" 
             fontSize={12} 
-            stroke={WHITE_COLOR} 
+            stroke={colors.WHITE_COLOR} 
             tickLine={false}
           />
           <PolarRadiusAxis tick={false} axisLine={false} />
