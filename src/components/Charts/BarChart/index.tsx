@@ -16,11 +16,7 @@ import {
   ValueType 
 } from "recharts/types/component/DefaultTooltipContent";
 
-import { 
-  PRIMARY_COLOR,
-  SECONDARY_COLOR,
-  TOOLTIP_COLOR
-} from "../../../constants";
+import { colors } from "../../../constants";
 
 export type BarChartProps = {
   day: number,
@@ -124,19 +120,19 @@ const BarChartComponent = ({data}: {data: BarChartProps[]}) => {
           <Bar
             dataKey="weight" 
             yAxisId="right" 
-            fill={SECONDARY_COLOR} 
+            fill={colors.SECONDARY_COLOR} 
             unit='Kg' 
             radius={[10, 10, 0, 0]}
           />
           <Bar 
             dataKey="calories" 
             yAxisId="left" 
-            fill={PRIMARY_COLOR} 
+            fill={colors.PRIMARY_COLOR} 
             unit='Kcal' 
             radius={[10, 10, 0, 0]}
           />
           <Tooltip
-            cursor={{ fill: `${TOOLTIP_COLOR}`, fillOpacity: 0.5 }}
+            cursor={{ fill: `${colors.TOOLTIP_COLOR}`, fillOpacity: 0.5 }}
             content={customTooltip}
             allowEscapeViewBox={{ x: false, y: false }}
             offset={100}

@@ -43,7 +43,7 @@ export const transformKeysData = (userData: User): CardProps[] => {
   }];
 };
 
-export const transformActivityData = (userActivityData: UserActivity): BarChartProps[] => {
+export const transformUserActivity = (userActivityData: UserActivity): BarChartProps[] => {
   return userActivityData?.sessions?.map((sessionActivity: SessionActivityType) => ({
     day: new Date(sessionActivity.day).getDate(),
     weight: sessionActivity.kilogram,
@@ -51,7 +51,7 @@ export const transformActivityData = (userActivityData: UserActivity): BarChartP
   }));
 };
 
-export const transformRadarChartData = (userPerformance: UserPerformance): RadarChartProps[] => {
+export const transformUserPerformance = (userPerformance: UserPerformance): RadarChartProps[] => {
   return userPerformance?.data.map((perf: UserData) => ({
     kind: userPerformance.kind[perf.kind].toString(),
     value: perf.value,
@@ -59,7 +59,7 @@ export const transformRadarChartData = (userPerformance: UserPerformance): Radar
   }));
 };
 
-export const transformUserAverageSessionsData = (userAverageSessions: UserAverageSessions): LineChartProps[] => {
+export const transformUserAverageSessions = (userAverageSessions: UserAverageSessions): LineChartProps[] => {
   return userAverageSessions?.sessions.map((session: SessionAverageType) => ({
     name: getFirstLetterDay(session.day),
     value: session.sessionLength

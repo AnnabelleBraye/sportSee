@@ -4,7 +4,7 @@ import {
   RadialBarChart, 
   ResponsiveContainer 
 } from "recharts"
-import { WHITE_COLOR } from "../../../constants"
+import { colors } from "../../../constants"
 
 export type RadialBarChartProps = {
   name: string,
@@ -29,7 +29,7 @@ const RadialBarChartComponent = ({data}: {data: RadialBarChartProps[]}) => {
           startAngle={180}
           endAngle={-270}
           >
-          <circle cx="50%" cy="50%" r="28%" fill={WHITE_COLOR} />
+          <circle cx="50%" cy="50%" r="28%" fill={colors.WHITE_COLOR} />
           <PolarAngleAxis
             type="number"
             domain={[0, 100]}
