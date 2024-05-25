@@ -6,7 +6,7 @@ import UserAverageSessions from '../../models/UserAverageSessions';
 import UserPerformance from '../../models/UserPerformance';
 
 import { 
-  FetchUserData, 
+  FetchUser, 
   FetchUserActivity, 
   FetchUserAverageSessions, 
   FetchUserPerformance 
@@ -97,7 +97,7 @@ const Profile = () => {
 export default Profile
 
 const manageData = (userId: number) => {
-  const user: FetchType<User> = FetchUserData(userId);
+  const user: FetchType<User> = FetchUser(userId);
   const userActivity: FetchType<UserActivity> = FetchUserActivity(userId);
   const userAverageSessions: FetchType<UserAverageSessions> = FetchUserAverageSessions(userId);
   const userPerformance: FetchType<UserPerformance> = FetchUserPerformance(userId);

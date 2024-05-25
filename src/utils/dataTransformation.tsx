@@ -5,7 +5,7 @@ import { RadarChartProps } from '../components/Charts/RadarChart';
 import { LineChartProps } from '../components/Charts/LineChart';
 import {
   SessionActivityType,
-  UserData 
+  UserType 
 } from '../types';
 import { getFirstLetterDay } from './date';
 import { SessionAverageType } from '../types';
@@ -14,8 +14,8 @@ import UserActivity from '../models/UserActivity';
 import UserAverageSessions from '../models/UserAverageSessions';
 import UserPerformance from '../models/UserPerformance';
 
-export const transformUserScore = (userData: User): RadialBarChartProps[] => {
-  const userScore = userData.score! * 100 || 0;
+export const transformUserScore = (user: User): RadialBarChartProps[] => {
+  const userScore = user.score! * 100 || 0;
   return [{
     name: 'score',
     value: userScore,
@@ -23,28 +23,28 @@ export const transformUserScore = (userData: User): RadialBarChartProps[] => {
   }];
 };
 
-export const transformKeysData = (userData: User): CardProps[] => {
+export const transformKeysData = (user: User): CardProps[] => {
   return [{
     image: 'src/assets/svg/calories.svg',
-    value: `${userData?.keyData.calorieCount}kCal`,
+    value: `${user?.keyData.calorieCount}kCal`,
     name: 'Calories'
   }, {
     image: 'src/assets/svg/proteines.svg',
-    value: `${userData?.keyData.proteinCount}g`,
+    value: `${user?.keyData.proteinCount}g`,
     name: 'Protéines'
   }, {
     image: 'src/assets/svg/glucides.svg',
-    value: `${userData?.keyData.carbohydrateCount}g`,
+    value: `${user?.keyData.carbohydrateCount}g`,
     name: 'Glucides'
   }, {
     image: 'src/assets/svg/lipides.svg',
-    value: `${userData?.keyData.lipidCount}g`,
+    value: `${user?.keyData.lipidCount}g`,
     name: 'Lipides'
   }];
 };
 
-export const transformUserActivity = (userActivityData: UserActivity): BarChartProps[] => {
-  return userActivityData?.sessions?.map((sessionActivity: SessionActivityType) => ({
+export const transformUserActivity = (userActivity: UserActivity): BarChartProps[] => {
+  return userActivity?.sessions?.map((sessionActivity: SessionActivityType) => ({
     day: new Date(sessionActivity.day).getDate(),
     weight: sessionActivity.kilogram,
     calories: sessionActivity.calories
@@ -52,7 +52,7 @@ export const transformUserActivity = (userActivityData: UserActivity): BarChartP
 };
 
 export const transformUserPerformance = (userPerformance: UserPerformance): RadarChartProps[] => {
-  return userPerformance?.data.map((perf: UserData) => ({
+  return userPerformance?.data.map((perf: UserType) => ({
     kind: userPerformance.kind[perf.kind].toString(),
     value: perf.value,
     fullMark: 70,
