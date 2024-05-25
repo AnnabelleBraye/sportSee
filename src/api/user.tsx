@@ -20,7 +20,7 @@ const FetchDataAndDeserialize = <T,>(
   return fetchData;
 };
 
-export const FetchUserData = (id: number): FetchType<User> => {
+export const FetchUser = (id: number): FetchType<User> => {
   const url = `${host}/user/${id}`;
   return FetchDataAndDeserialize<User>(url, User.fromApiResponse);
 };

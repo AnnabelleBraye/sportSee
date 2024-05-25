@@ -9,11 +9,11 @@ export type SessionAverageType = {
   sessionLength: number
 }
 
-export type KindMap = {
+export type KindMapType = {
   [key: number]: string;
 };
 
-export type UserData = {
+export type UserType = {
   value: number;
   kind: number;
 };

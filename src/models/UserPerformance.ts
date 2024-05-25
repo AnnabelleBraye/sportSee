@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UserData } from "../types";
+import { UserType } from "../types";
 
 export default class UserPerformance {
   userId: number;
   kind: { [key: number]: string };
-  data: UserData[];
+  data: UserType[];
 
-  constructor(userId: number, kind: { [key: number]: string }, data: UserData[]) {
+  constructor(userId: number, kind: { [key: number]: string }, data: UserType[]) {
     this.userId = userId;
     this.kind = kind;
     this.data = data;
