@@ -1,4 +1,4 @@
-import { FetchType } from '../../utils/hooks/userFetch';
+import { FetchType } from '../../utils/hooks/useFetch';
 
 import User from '../../models/User';
 import UserActivity from '../../models/UserActivity';

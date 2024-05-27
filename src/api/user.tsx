@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FetchType, useFetch } from "../utils/hooks/userFetch";
+import { FetchType, useFetch } from "../utils/hooks/useFetch";
 
 import User from "../models/User";
 import UserActivity from "../models/UserActivity";
